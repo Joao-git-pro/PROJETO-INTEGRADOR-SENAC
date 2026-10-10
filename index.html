@@ -448,6 +448,110 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
   .authov:not([hidden]) .asheet { animation: sheetUp .5s cubic-bezier(.2,.9,.25,1); }
   #au-body > * { animation: rise .5s cubic-bezier(.2,.8,.2,1) backwards; animation-delay: calc(var(--i, 0) * 50ms); }
 }
+/* ---------- Responsivo: celular, tablet e computador ---------- */
+[hidden] { display: none !important; }
+.mapwrap { height: clamp(430px, 64dvh, 660px); }
+.hgrid, .hcol, .hmain, .wgrid, .wcol, .rgrid, .rcol { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.rcol, .hmain { gap: 12px; }
+@media (hover: hover) {
+  .btn:not(:disabled):hover { filter: brightness(0.97); }
+  .btn.primary:not(:disabled):hover { filter: brightness(1.1); }
+  .row:hover, .dest:hover, .trip:not(:disabled):hover { background: color-mix(in srgb, var(--blue) 7%, var(--surface)); }
+  .chip:hover, .lchip:hover, .time:hover { box-shadow: 0 4px 14px rgba(10,40,40,.14); }
+  .cd:not(:disabled):hover { border-color: var(--blue); }
+  .seat:not(:disabled):hover { box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 25%, transparent); }
+  .zbtn:hover, .rbtn:hover, .avbtn:hover, .bigbtn:hover { filter: brightness(0.95); }
+  .meth:hover, .tipo:hover { border-color: color-mix(in srgb, var(--blue) 50%, var(--line)); }
+  .tab:hover { color: var(--ink); }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .mapwrap { height: 78dvh; min-height: 300px; }
+  .lsel { flex-wrap: nowrap !important; overflow-x: auto !important; }
+  .lsel > * { flex: 0 0 auto; }
+  .sheet { margin-top: -30px; }
+  .splash { justify-content: center; gap: 10px; padding-block: 12px; }
+  .splash .art { width: 150px; margin: 0; }
+  .splash h2 { font-size: 1.5rem; }
+  .splash .lg { margin-top: 0; flex-direction: row; }
+  .splash .lg svg { width: 44px; height: 44px; }
+  .modal { align-items: center; }
+  .mbox { border-radius: 24px; max-height: 94dvh; }
+  .ahero { padding: 10px 20px 4px; }
+  .ahero svg.aart { width: 90px; }
+  .nfcmid { gap: 10px; }
+  .rings { width: 120px; height: 120px; }
+  .rings .core { width: 64px; height: 64px; }
+  .nav .in .tab { min-height: 52px; }
+}
+@media (min-width: 720px) {
+  .wrap { max-width: 920px; padding-inline: 24px; }
+  main { padding-top: 20px; }
+  body { padding-bottom: 104px; }
+  .lsel { flex-wrap: wrap; overflow: visible; margin-inline: 0; padding-inline: 0; }
+  .mapwrap { height: clamp(480px, 62dvh, 720px); }
+  .modal { align-items: center; padding: 24px; }
+  .mbox { border-radius: 28px; max-height: 88dvh; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+  #r-destlist { display: grid; grid-template-columns: repeat(2, 1fr); background: transparent; box-shadow: none; gap: 12px; overflow: visible; }
+  .dest { background: var(--surface); border-radius: 18px; box-shadow: var(--shadow); border-top: 0; }
+  #r-minhas { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .times { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+  #r-ok { align-items: center; }
+  #r-ticket, #r-nova { width: 100%; max-width: 560px; }
+  .steps { max-width: 560px; }
+  .splash h2 { font-size: 2.3rem; }
+  .splash .art { width: min(60vw, 340px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 720px) {
+    .modal:not([hidden]) .mbox { animation: dialogIn .38s cubic-bezier(.2,.9,.25,1); }
+    @keyframes dialogIn { from { opacity: 0; transform: translateY(24px) scale(.96); } to { opacity: 1; transform: none; } }
+  }
+}
+@media (min-width: 900px) {
+  #r-poltrona:not([hidden]) { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 16px 24px; align-items: start; }
+  #r-poltrona > .back { grid-column: 1 / -1; }
+  #r-poltrona > .mini { grid-column: 2; grid-row: 2; }
+  #r-poltrona > .busbody { grid-column: 1; grid-row: 2 / span 2; justify-self: center; }
+  #r-poltrona > #r-form { grid-column: 2; grid-row: 3; }
+  .authov { flex-direction: row; }
+  .ahero { flex: 1; justify-content: center; gap: 10px; padding: 40px; }
+  .ahero svg.aart { width: min(44vh, 340px); }
+  .ahero b { font-size: 2rem; }
+  .asheet { flex: 0 0 min(540px, 46vw); border-radius: 0; display: flex; flex-direction: column; justify-content: center; padding: 40px; }
+  .asheet .panel { width: 100%; }
+  .authov .ax { background: var(--sheet); color: var(--ink); right: 16px; }
+}
+@media (min-width: 1000px) {
+  .wrap { max-width: 1240px; padding-inline: 32px; }
+  body { padding-bottom: 40px; }
+  .top { position: sticky; top: 0; z-index: 6; min-height: 68px; display: flex; align-items: center; padding-block: 0; }
+  .top .wrap { width: 100%; }
+  .nav { top: 0; bottom: auto; height: 68px; background: transparent; border: 0; pointer-events: none; padding: 0; z-index: 7; }
+  .nav .in { pointer-events: auto; max-width: 540px; height: 68px; }
+  .tab { flex-direction: row; justify-content: center; gap: 8px; min-height: 68px; font-size: 0.95rem; padding: 0 8px; }
+  .tab svg { width: 22px; height: 22px; }
+  .tab[aria-selected="true"]::before { top: auto; bottom: 0; left: 16%; right: 16%; height: 3px; border-radius: 3px 3px 0 0; }
+  #p-mapa { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 16px 24px; align-content: start; }
+  #p-mapa > .lsel { grid-column: 1 / -1; }
+  #p-mapa > .mapwrap { grid-column: 1; grid-row: 2 / span 4; position: sticky; top: 84px; align-self: start; height: calc(100dvh - 190px); min-height: 520px; max-height: 880px; }
+  #p-mapa > #info { grid-column: 2; grid-row: 2; margin-top: 0; }
+  #p-mapa > #h-onibus { grid-column: 2; grid-row: 3; }
+  #p-mapa > #lista { grid-column: 2; grid-row: 4; }
+  #p-mapa > #d-real { grid-column: 2; grid-row: 5; align-self: start; }
+  .handle { display: none; }
+  .zoom { bottom: 16px; }
+  .hgrid { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .hcol { position: sticky; top: 90px; }
+  .wgrid { display: grid; grid-template-columns: minmax(0, 480px) minmax(0, 1fr); gap: 24px; align-items: start; }
+  #r-destlist { grid-template-columns: repeat(3, 1fr); }
+  .rgrid { display: grid; grid-template-columns: 430px minmax(0, 1fr); gap: 24px; align-items: start; }
+  #r-minhas { grid-template-columns: repeat(3, 1fr); }
+  .toast { top: 84px; }
+}
+@media (min-width: 1400px) {
+  html { font-size: 106.25%; }
+  html.big { font-size: 125%; }
+}
 </style>
 
 <div class="splash" id="splash" role="dialog" aria-modal="true" aria-labelledby="sp-t">
@@ -509,9 +613,9 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
       </div>
     </div>
     <div class="sheet" id="info" aria-live="polite"></div>
-    <h2>Ônibus desta linha</h2>
+    <h2 id="h-onibus">Ônibus desta linha</h2>
     <div class="rows" id="lista"></div>
-    <details>
+    <details id="d-real">
       <summary>O que falta para virar real</summary>
       <ul>
         <li>Posição real: rastreador GPS nos ônibus ou app no celular do motorista, autorizado pela Viação União e pelo Demuttran.</li>
@@ -525,14 +629,17 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
 
   <!-- HORÁRIOS -->
   <section class="panel" id="p-horarios" role="tabpanel" aria-labelledby="tab-horarios" hidden>
+    <div class="hgrid"><div class="hcol">
     <div class="chips" id="h-linhas" role="group" aria-label="Escolher linha"></div>
     <div class="chips" id="h-dia" role="radiogroup" aria-label="Tipo de dia"></div>
     <div class="chips" id="h-sentido" role="radiogroup" aria-label="Sentido"></div>
+    </div><div class="hmain">
     <h2 id="h-titulo"></h2>
     <p class="small muted">Toque em um horário para ver a que horas o ônibus passa em cada parada.</p>
     <div class="times" id="h-times"></div>
     <h3 id="h-paradas-titulo"></h3>
     <div class="rows" id="h-paradas"></div>
+    </div></div>
   </section>
 
   <!-- PASSAGENS -->
@@ -550,6 +657,7 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
       <button class="back" id="r-voltar0" type="button">&larr; Outras cidades</button>
       <div class="dhead"><h2 id="r-dtitulo"></h2></div>
       <p class="muted" id="r-dsub"></p>
+      <div class="rgrid">
       <div class="card cal">
         <div class="calhd">
           <button class="cnav" id="c-prev" type="button" aria-label="Mês anterior">&lsaquo;</button>
@@ -559,8 +667,8 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
         <div class="calgrid" id="c-grid"></div>
         <div class="legend"><span><i></i>Tem viagem</span><span><i class="f"></i>Poucas vagas</span><span><i class="l"></i>Lotado</span><span><i class="n"></i>Sem viagem</span></div>
       </div>
-      <h2 id="r-titulo"></h2>
-      <div class="rows" id="r-viagens"></div>
+      <div class="rcol"><h2 id="r-titulo"></h2>
+      <div class="rows" id="r-viagens"></div></div></div>
     </div>
 
     <div id="r-poltrona" class="panel" hidden>
@@ -621,8 +729,10 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
       </form>
     </div>
     <div id="w-main" class="panel" hidden>
+      <div class="wgrid"><div class="wcol">
       <div class="pass" id="w-pass"></div>
       <button class="btn primary" id="w-nfc" type="button" style="min-height:64px;font-size:1.15rem">Embarcar com NFC</button>
+      </div><div class="wcol">
       <div class="card" id="w-rec">
         <h3>Recarregar o passe</h3>
         <div class="chips" id="w-valores" role="radiogroup" aria-label="Valor da recarga"></div>
@@ -642,6 +752,7 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
         </ul>
       </details>
       <button class="btn danger" id="w-sair" type="button">Apagar meu perfil deste aparelho</button>
+      </div></div>
     </div>
   </section>
 </main>
@@ -1065,18 +1176,31 @@ pre.dump { font-family: var(--font-mono); font-size: 0.72rem; white-space: pre-w
     worldImg.style.transform = "translate3d(" + ((-100 - x) * s).toFixed(1) + "px," + ((-100 - y) * s).toFixed(1) + "px,0)";
   }
   function setFollow(on) { cam.follow = on; $("#z-follow").setAttribute("aria-pressed", on ? "true" : "false"); }
-  var drag = null, moved = false;
-  map.addEventListener("pointerdown", function (e) { if (e.button > 0) return; drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y }; moved = false; });
+  var drag = null, moved = false, ptrs = {}, pinch = null;
+  function nPtr() { return Object.keys(ptrs).length; }
+  map.addEventListener("pointerdown", function (e) {
+    if (e.pointerType === "mouse" && e.button > 0) return;
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+    if (nPtr() === 1) { drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y }; moved = false; }
+    else if (nPtr() === 2) { var k = Object.keys(ptrs), a = ptrs[k[0]], b = ptrs[k[1]]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), z: cam.z }; drag = null; moved = true; }
+  });
   window.addEventListener("pointermove", function (e) {
+    if (!ptrs[e.pointerId]) return;
+    ptrs[e.pointerId] = { x: e.clientX, y: e.clientY };
+    if (pinch && nPtr() >= 2) {
+      var k = Object.keys(ptrs), a = ptrs[k[0]], b = ptrs[k[1]], d = Math.max(10, Math.hypot(a.x - b.x, a.y - b.y));
+      cam.z = Math.max(150, Math.min(900, pinch.z * pinch.d / d)); applyCam(); return;
+    }
     if (!drag) return;
     var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
     if (!moved && Math.hypot(dx, dy) < 6) return;
-    moved = true; var k = cam.z / (map.clientWidth || 400);
-    cam.x = drag.cx - dx * k; cam.y = drag.cy - dy * k; setFollow(false); applyCam();
+    moved = true; var kk = cam.z / (map.clientWidth || 400);
+    cam.x = drag.cx - dx * kk; cam.y = drag.cy - dy * kk; setFollow(false); applyCam();
   });
-  function endDrag() { drag = null; }
-  window.addEventListener("pointerup", endDrag); window.addEventListener("pointercancel", endDrag);
+  function endPtr(e) { delete ptrs[e.pointerId]; if (nPtr() < 2) pinch = null; if (nPtr() === 0) drag = null; }
+  window.addEventListener("pointerup", endPtr); window.addEventListener("pointercancel", endPtr);
   map.addEventListener("click", function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+  map.addEventListener("wheel", function (e) { e.preventDefault(); cam.z = Math.max(150, Math.min(900, cam.z * Math.exp(e.deltaY * 0.0015))); applyCam(); }, { passive: false });
   $("#z-in").addEventListener("click", function () { cam.z = Math.max(160, cam.z * 0.75); applyCam(); });
   $("#z-out").addEventListener("click", function () { cam.z = Math.min(900, cam.z * 1.35); applyCam(); });
   $("#z-follow").addEventListener("click", function () { setFollow(!cam.follow); if (cam.follow) jumpToSel(); });
